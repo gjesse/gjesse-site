@@ -3,7 +3,7 @@
     <p>{{ .Site.Copyright | safeHTML }}</p>
   </div>
 </section>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js" integrity="sha-384-BA64Pbom6s1cFobK6lLrxH00+tV8fV79eto4YAbT6JTQNvI8edolukUleKe2T/6L" crossorigin="anonymous"></script>
 {{ range .Site.Params.highlight.languages }}
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/languages/{{ . }}.min.js"></script>
 {{ end }}
