@@ -98,7 +98,7 @@ fun `test template`() {
 
 ## go speed racer
 
-This is getting there, but we'll soon be annoyed that we have to repeat very similar steps in each test. Furthermore, we'll soon realize that ES sometimes doesn't report changes right away when querying, so now we need to add some checks after each modification to make sure our changes are visible. Using the great [Awaitility](http://www.awaitility.org/) tool, we finally have a set of tests that are independent from each other, easy to reason about, and self contained, Yay!
+This is getting there, but we'll soon be annoyed that we have to repeat very similar steps in each test. Furthermore, we'll soon realize that ES sometimes doesn't report changes right away when querying, so now we need to add some checks after each modification to make sure our changes are visible. Using [Awaitility](http://www.awaitility.org/), we finally have a set of tests that are independent from each other, easy to reason about, and self contained, Yay!
 
 ```kotlin
 @Test
@@ -145,9 +145,7 @@ Welp... it works, but that's really getting a lot of boilerplate going on now. L
 @Test
 fun `test template with put - delete`() {
     // setup
-    val entity1 = "abc"
-    val entity2 = "def"
-    val entities = listOf(entity1, entity2)
+    val entities = listOf("abc", "abc")
     val query = "*"
 
     put(entities)
@@ -157,7 +155,7 @@ fun `test template with put - delete`() {
 
     // assert
     assertThat(results)
-            .containsAll(listOf(entity1, entity2))
+            .containsAll(entities)
             .hasSize(2)
 
     // cleanup
@@ -195,9 +193,7 @@ Let's wrap the put/delete behavior around an arbitrary code block using Kotlin's
 @Test
 fun `test template with put and delete`() {
     // setup
-    val entity1 = "abc"
-    val entity2 = "def"
-    val entities = listOf(entity1, entity2)
+    val entities = listOf("abc", "abc")
     val query = "*"
 
     putAndDelete(entities) {
@@ -206,7 +202,7 @@ fun `test template with put and delete`() {
 
         // assert
         assertThat(results)
-                .containsAll(listOf(entity1, entity2))
+                .containsAll(entities)
                 .hasSize(2)
 
     }
@@ -218,7 +214,7 @@ fun putAndDelete(entities: List<String>, block: () -> Unit) {
 }
 ```
 
-Now this is starting to look pretty nice! What's next? we can pass our entity list back to the receiver function. This isn't strictly necessary, but I like it.
+Now this is starting to look pretty sweet! What's next? We can pass our entity list back to the receiver function. This isn't strictly necessary, but I like it.
 
 ```kotlin
 @Test
@@ -245,7 +241,7 @@ fun putAndDelete(entities: List<String>, block: (List<String>) -> Unit) {
 ```
 ## Whoops, try harder
 
-Things are humming along now - your tests are passing, until one day someone checks in some code that breaks a test - actually it breaks 2 tests, but one is very sneaky. What happens if our `block()` receiver throws an exception? that's right, then `delete()` never gets called. Since we spent the time making this all nice and usable, it's now trivial to fix this for all existing and future tests:
+Things are humming along now - your tests are passing, until one day someone checks in some code that breaks a test - actually it breaks 2 tests, but one is very sneaky. What happens if our `block()` receiver throws an exception? That's right, then `delete()` never gets called. Since we spent the time making this all nice and reusable, it's now trivial to fix this for all existing and future tests:
 
 ```kotlin
 fun putAndDelete(entities: List<String>, block: (List<String>) -> Unit) {
