@@ -4,8 +4,8 @@ baseURL = "https://gjesse.github.io/"
 
 theme = "Hucore"
 copyright = "&copy; 2017 | Follow on <a href=\"https://twitter.com/gjesse\" target=\"_blank\">Twitter</a>"
-#disqusShortname = "shortname"
-#googleAnalytics = "trackingcode"
+disqusShortname = "https-gjesse-github-io"
+googleAnalytics = "UA-94123510-1"
 
 [taxonomies]
 tag = "tags"
