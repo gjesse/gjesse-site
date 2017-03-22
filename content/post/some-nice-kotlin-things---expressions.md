@@ -1,6 +1,6 @@
 +++
-draft = true
-date = "2017-03-22T16:23:38-05:00"
+draft = false
+date = "2017-03-22T17:19:53-05:00"
 title = "Some nice Kotlin things - expressions"
 categories = ["kotlin", "expressions"]
 author = "Jesse Hodges"
