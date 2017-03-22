@@ -19,7 +19,7 @@ sharingicons = true
 
 [params.highlight]
 style = "solarized-light"
-languages = ["kotlin"]
+languages = ["kotlin", "java"]
 
 [[params.social]]
 url = "https://github.com/gjesse"

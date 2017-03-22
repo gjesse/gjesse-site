@@ -2,7 +2,8 @@
 draft = false
 date = "2017-03-20T18:47:03-05:00"
 title = "Unit testing with kotlin - mini dsls"
-
+categories = ["kotlin", "testing"]
+author = "Jesse Hodges"
 +++
 
 Fair warning: these examples are contrived, but the structure is very much based on a real world problem.
