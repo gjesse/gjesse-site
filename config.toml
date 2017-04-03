@@ -13,7 +13,7 @@ category = "categories"
 
 [params]
 description = "Your description here"
-keywords = ["jesse hodges", "software", "kotlin"]
+keywords = ["jesse hodges", "software", "kotlin", "java"]
 author = "Jesse Hodges"
 sharingicons = true
 
